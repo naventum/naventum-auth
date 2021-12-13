@@ -6,18 +6,14 @@ use Naventum\Framework\Illuminate\Support\Config;
 
 class Features
 {
-    const LOGIN = 'login';
-
-    const REGISTER = 'register';
-
-    public static function login()
+    public static function hasLogin()
     {
-        return static::config()->features->{static::LOGIN};
+        return static::config()->features->login;
     }
 
-    public static function register()
+    public static function hasRegister()
     {
-        return static::config()->features->{static::REGISTER};
+        return static::config()->features->register;
     }
 
     private static function config()
