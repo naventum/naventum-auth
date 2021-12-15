@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return View::make('auth/login', $this->paths['view_path']);
+        return View::make('naventum-auth/auth/login', $this->paths['view_path']);
     }
 
     public function login()

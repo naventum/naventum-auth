@@ -13,7 +13,7 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return View::make('auth/register', $this->paths['view_path']);
+        return View::make('naventum-auth/auth/register', $this->paths['view_path']);
     }
 
     public function register()

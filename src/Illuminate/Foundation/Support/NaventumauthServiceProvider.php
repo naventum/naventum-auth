@@ -2,8 +2,8 @@
 
 namespace Naventum\NaventumAuth\Illuminate\Foundation\Support;
 
-use App\Http\Middleware\isAuth;
-use App\Http\Middleware\isGuest;
+use App\Http\Middleware\IsAuth;
+use App\Http\Middleware\IsGuest;
 use Naventum\NaventumAuth\Illuminate\Foundation\Controllers\LoginController;
 use Naventum\NaventumAuth\Illuminate\Support\Features;
 use Naventum\Framework\Illuminate\Support\Facades\Route as ServiceProvider;
@@ -20,15 +20,15 @@ class NaventumauthServiceProvider extends ServiceProvider
     public function boot()
     {
         if (Features::hasLogin()) {
-            $this->get('/auth/login', [LoginController::class, 'index'])->middleware([isGuest::class])->name('naventum.auth.login');
-            $this->post('/auth/login', [LoginController::class, 'login'])->middleware([isGuest::class])->name('naventum.auth.login.submit');
+            $this->get('/auth/login', [LoginController::class, 'index'])->middleware([IsGuest::class])->name('naventum.auth.login');
+            $this->post('/auth/login', [LoginController::class, 'login'])->middleware([IsGuest::class])->name('naventum.auth.login.submit');
 
-            $this->get('/auth/logout', [LogoutController::class, 'logout'])->middleware([isAuth::class])->name('naventum.auth.logout');
+            $this->get('/auth/logout', [LogoutController::class, 'logout'])->middleware([IsAuth::class])->name('naventum.auth.logout');
         }
 
         if (Features::hasRegister()) {
-            $this->get('/auth/register', [RegisterController::class, 'index'])->middleware([isGuest::class])->name('naventum.auth.register');
-            $this->post('/auth/register', [RegisterController::class, 'register'])->middleware([isGuest::class])->name('naventum.auth.register.submit');
+            $this->get('/auth/register', [RegisterController::class, 'index'])->middleware([IsGuest::class])->name('naventum.auth.register');
+            $this->post('/auth/register', [RegisterController::class, 'register'])->middleware([IsGuest::class])->name('naventum.auth.register.submit');
         }
     }
 }
